@@ -7,6 +7,7 @@ A simple bootstrap file that you can use to directly run your CodeIgniter contro
 and redirect the output to a log file.
 
 Author: Jonathon Hill
+
 License: MIT
 
 Installation

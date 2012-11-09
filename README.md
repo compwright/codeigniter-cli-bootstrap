@@ -3,17 +3,19 @@ codeigniter-cli-bootstrap
 
 Formerly: **Cron Bootstrapper**
 
-A simple bootstrap file that you can use to directly run your CodeIgniter controllers from the command line and redirect the output to a log file.
+A simple bootstrap file that you can use to directly run your CodeIgniter controllers from the command line
+and redirect the output to a log file.
 
 Installation
 ------------
 
-1) Copy the code at the bottom of this code and save it in a file called **cron.php** anywhere on your server (but not in the document root!).
+1) Copy the code at the bottom of this code and save it in a file called **cron.php** somewhere outside the
+   document root.
 
-2) Set the CRON_CI_INDEX constant to the full absolute file/path of your CodeIgniter index.php file
+2) Set the `CRON_CI_INDEX` constant to the full absolute file/path of your CodeIgniter `index.php` file
 
 3) Make this file directly executable:
-```php
+```sh
 chmod a+x cron.php
 ```
 
@@ -41,7 +43,8 @@ Options
 (Optional) Stop running after N seconds (default=0, no time limit)
 
 ### `--server=http_server_name`
-(Optional) Set the $_SERVER['SERVER_NAME'] system variable (useful if your application needs to know what the server name is)
+(Optional) Set the `$_SERVER['SERVER_NAME']` system variable (useful if your application needs to know what the
+server name is)
 
 Troubleshooting
 ---------------
@@ -60,13 +63,13 @@ rm cron.old
 ### Fatal error in cron.php around line 111:
 
 ```php
-require(CRON_CI_INDEX);           // Main CI index.php file
+require(CRON_CI_INDEX); // Main CI index.php file
 ```
 
 Check that you have correctly defined the path to your application's main **index.php** defined correctly:
 
 ```php
-define('CRON_CI_INDEX', '/var/www/vhosts/intranet/index.php');   // Your CodeIgniter main index.php file
+define('CRON_CI_INDEX', '/var/www/vhosts/intranet/index.php'); // Your CodeIgniter main index.php file
 ```
 
 ### No errors or output and the script doesn't seem to run:

@@ -41,21 +41,21 @@ foreach($argv as $arg)
             $_SERVER['REQUEST_URI'] = $value;
             $_SERVER['SERVER_NAME'] = 'intranet.goyoders.com';
             $required['--run'] = TRUE;
-            break;
+        break;
 
         case '-S':
         case '--show-output':
             define('CRON_FLUSH_BUFFERS', TRUE);
-            break;
+        break;
 
         case '--log-file':
             if(is_writable($value)) define('CRON_LOG', $value);
             else die("Logfile $value does not exist or is not writable!\n\n");
-            break;
+        break;
 
         case '--time-limit':
             define('CRON_TIME_LIMIT', $value);
-            break;
+        break;
 
         default:
             die($usage);

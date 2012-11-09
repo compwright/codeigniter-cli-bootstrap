@@ -21,13 +21,11 @@ Installation
 
 1) Copy the code at the bottom of this code and save it in a file called **cron.php** somewhere outside the
    document root.
-
 2) Set the `CRON_CI_INDEX` constant to the full absolute file/path of your CodeIgniter `index.php` file
-
 3) Make this file directly executable:
-```sh
-chmod a+x cron.php
-```
+   ```sh
+   chmod a+x cron.php
+   ```
 
 Usage
 -----

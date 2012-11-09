@@ -6,6 +6,16 @@ Formerly: **Cron Bootstrapper**
 A simple bootstrap file that you can use to directly run your CodeIgniter controllers from the command line
 and redirect the output to a log file.
 
+Features
+--------
+
+* Easy to use
+* No core framework hacking
+* Bootstrap file exists independently of your application
+* Supports runtime limit
+* Log the results of each run
+* Run directly without the PHP command (on UNIX systems only)
+
 Installation
 ------------
 

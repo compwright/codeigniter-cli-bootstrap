@@ -64,7 +64,7 @@ foreach($argv as $arg)
 
 if(!defined('CRON_LOG'))
 {
-	define('CRON_LOG', 'cron.log')
+	define('CRON_LOG', 'cron.log');
 }
 
 if(!defined('CRON_TIME_LIMIT'))

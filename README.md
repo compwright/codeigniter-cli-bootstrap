@@ -80,7 +80,7 @@ require(CRON_CI_INDEX); // Main CI index.php file
 Check that you have correctly defined the path to your application's main **index.php** defined correctly:
 
 ```php
-define('CRON_CI_INDEX', '/var/www/vhosts/intranet/index.php'); // Your CodeIgniter main index.php file
+define('CRON_CI_INDEX', '/var/www/vhosts/htdocs/index.php'); // Your CodeIgniter main index.php file
 ```
 
 ### No errors or output and the script doesn't seem to run:

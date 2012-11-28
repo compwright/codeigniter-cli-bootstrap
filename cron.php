@@ -21,7 +21,7 @@
 |
 */
 
-define('CRON_CI_INDEX', 'c:/www/vhosts/myaccount/index.php');   // Your CodeIgniter main index.php file
+define('CRON_CI_INDEX', 'index.php');   // Your CodeIgniter main index.php file
 //define('CRON_CI_INDEX', '/var/www/vhosts/myaccount/index.php');   // Your CodeIgniter main index.php file
 define('CRON', TRUE);   // Test for this in your controllers if you only want them accessible via cron
 
@@ -30,16 +30,20 @@ $script = array_shift($argv);
 $cmdline = implode(' ', $argv);
 $usage = "Usage: cron.php --run=/controller/method [--show-output][-S] [--log-file=logfile] [--time-limit=N]\n\n";
 $required = array('--run' => FALSE);
+$uri = '';
+
 foreach($argv as $arg)
 {
     list($param, $value) = explode('=', $arg);
+    
     switch($param)
     {
         case '--run':
             // Simulate an HTTP request
+            $uri = $value;
             $_SERVER['PATH_INFO'] = $value;
             $_SERVER['REQUEST_URI'] = $value;
-            $_SERVER['SERVER_NAME'] = 'intranet.goyoders.com';
+            $_SERVER['SERVER_NAME'] = 'localhost';
             $required['--run'] = TRUE;
         break;
 
@@ -62,21 +66,26 @@ foreach($argv as $arg)
     }
 }
 
-if(!defined('CRON_LOG'))
+$_SERVER['argv'][1] = $uri;
+
+for ($i=2; $i<$argc; $i++)
+    $_SERVER['argv'][$i] = '';
+
+if( ! defined('CRON_LOG'))
 {
-	define('CRON_LOG', 'cron.log');
+    define('CRON_LOG', 'cron.log');
 }
 
-if(!defined('CRON_TIME_LIMIT'))
+if( ! defined('CRON_TIME_LIMIT'))
 {
-	define('CRON_TIME_LIMIT', 0);
+    define('CRON_TIME_LIMIT', 0);
 }
 
 foreach($required as $arg => $present)
 {
-    if(!$present)
+    if( ! $present)
     {
-    	die($usage);
+        die($usage);
     }
 }
 
@@ -89,10 +98,10 @@ ob_start();
 chdir(dirname(CRON_CI_INDEX));
 require(CRON_CI_INDEX);           // Main CI index.php file
 $output = ob_get_contents();
-
+ 
 if(CRON_FLUSH_BUFFERS === TRUE)
 {
-    while(@ob_end_flush());		// display buffer contents
+    while(@ob_end_flush());     // display buffer contents
 }
 else
 {
@@ -104,5 +113,5 @@ error_log("////// ".date('Y-m-d H:i:s')." cron.php $cmdline\r\n", 3, CRON_LOG);
 error_log(str_replace("\n", "\r\n", $output), 3, CRON_LOG);
 error_log("\r\n////// \r\n\r\n", 3, CRON_LOG);
 
-echo "\n\n";
+echo "\n\n"; 
 

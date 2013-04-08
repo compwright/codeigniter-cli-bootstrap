@@ -24,6 +24,7 @@
 define('CRON_CI_INDEX', 'index.php');   // Your CodeIgniter main index.php file
 //define('CRON_CI_INDEX', '/var/www/vhosts/myaccount/index.php');   // Your CodeIgniter main index.php file
 define('CRON', TRUE);   // Test for this in your controllers if you only want them accessible via cron
+define('CRON_FLUSH_BUFFERS', TRUE);
 
 // Parse the command line
 $script = array_shift($argv);
